@@ -2,58 +2,59 @@ import 'package:oop_lsp/oop_lsp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-enum CartState { root, detail }
+enum ManageMenuState { root, editor }
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeManager extends StatefulWidget {
+  const HomeManager({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeManager> createState() => _HomeManagerState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeManagerState extends State<HomeManager> {
   @override
   void initState() {
+    final MenuProvider menuProvider = context.read();
     super.initState();
   }
 
   int _activePage = 0;
 
-  CartState manageMenuStateFromString(String value) {
+  ManageMenuState manageMenuStateFromString(String value) {
     switch (value) {
       case '/':
-        return CartState.root;
-      case '/detail':
-        return CartState.detail;
+        return ManageMenuState.root;
+      case '/editor':
+        return ManageMenuState.editor;
       default:
-        return CartState.root;
+        return ManageMenuState.root;
     }
   }
 
-  // Widget buildManageUserPage() {
-  //   return Navigator(
-  //     initialRoute: '/',
-  //     onGenerateRoute: (RouteSettings settings) {
-  //       WidgetsBinding.instance!.addPostFrameCallback((_) {
-  //         setState(() {
-  //           manageMenuStateFromString(settings.name!);
-  //         });
-  //       });
-  //       final args = settings.arguments as Map<String, dynamic>?;
-  //       final routes = {
-  //         '/': (context) => const CartPage(),
-  //         // '/detail': (context) => CartDetail(menu: args?['item']),
-  //       };
+  Widget buildManageUserPage() {
+    return Navigator(
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetsBinding.instance!.addPostFrameCallback((_) {
+          setState(() {
+            manageMenuStateFromString(settings.name!);
+          });
+        });
+        final args = settings.arguments as Map<String, dynamic>?;
+        final routes = {
+          '/': (context) => const ManageMenu(),
+          '/editor': (context) => MenuEditor(menu: args?['item']),
+        };
 
-  //       return MaterialPageRoute(
-  //           settings: settings,
-  //           builder: (context) => routes[settings.name]!(context));
-  //     },
-  //   );
-  // }
+        return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => routes[settings.name]!(context));
+      },
+    );
+  }
 
   List<Widget> get pages => [
-        CartPage(),
+        buildManageUserPage(),
         Container(child: Center(child: Text('Manager'))),
         ProfilePage(),
       ];

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 AppBar appBar(BuildContext context) {
   return AppBar(
-    title: Text('SIMPLE CAFE', style: TextStyle(fontWeight: FontWeight.bold)),
+    title: Text('GRAFIKA CAFE', style: TextStyle(fontWeight: FontWeight.bold)),
     centerTitle: true,
     elevation: 0,
     actions: <Widget>[

@@ -1,8 +1,8 @@
+import 'package:oop_lsp/oop_lsp.dart';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oop_lsp/oop_lsp.dart';
 
 class ManageUser extends StatefulWidget {
   const ManageUser({Key? key}) : super(key: key);
@@ -22,9 +22,19 @@ class _ManageUserState extends State<ManageUser> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Manage User',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Manage User',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/editor');
+                },
+                icon: const Icon(CupertinoIcons.add))
+          ],
         ),
         SizedBox(height: 20),
         SearchField(
@@ -147,8 +157,8 @@ class _ManageUserState extends State<ManageUser> {
                             IconButton(
                               icon: Icon(Icons.edit),
                               onPressed: () {
-                                // Navigator.pushNamed(context, '/edit-user',
-                                //     arguments: user);
+                                Navigator.pushNamed(context, '/editor',
+                                    arguments: {'item': user});
                               },
                             ),
                           ],

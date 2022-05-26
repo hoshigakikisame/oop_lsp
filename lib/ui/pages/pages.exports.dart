@@ -5,7 +5,9 @@
 library pages;
 
 export 'auth/auth.exports.dart';
+export 'cart/cart.exports.dart';
 export 'home/home.exports.dart';
+export 'menu/menu.exports.dart';
 export 'profile/profile.exports.dart';
 export 'user/user.exports.dart';
 

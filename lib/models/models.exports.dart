@@ -6,3 +6,5 @@ library models;
 
 
 export 'user_profile.model.dart';
+export 'menu_model.dart';
+export 'cart_model.dart';

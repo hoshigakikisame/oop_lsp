@@ -39,4 +39,14 @@ class UserProvider with ChangeNotifier {
     });
     await refresh();
   }
+
+  // update user
+  Future<void> updateUser(UserProfile profile) async {
+    await supabaseRequest(supabase
+        .from('profile')
+        .update(profile.toJson())
+        .eq('id', profile.id)
+        .execute());
+    await refresh();
+  }
 }

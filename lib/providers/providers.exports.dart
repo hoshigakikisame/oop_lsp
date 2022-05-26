@@ -6,5 +6,8 @@ library providers;
 
 
 export 'user_provider.dart';
+export 'transaction_provider.dart';
+export 'menu_provider.dart';
 export 'config_provider.dart';
+export 'cart_provider.dart';
 export 'auth_provider.dart';

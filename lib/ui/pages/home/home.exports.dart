@@ -5,5 +5,6 @@
 library home;
 
 
+export 'home_manager.dart';
 export 'home_admin.dart';
 export 'home.dart';

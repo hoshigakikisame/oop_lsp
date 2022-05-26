@@ -76,16 +76,16 @@ class _ConfirmDialogState extends State<ConfirmDialog> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(context.accentColor)),
-                      child: Text(
+                      child: const Text(
                         'Yes',
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
                         Navigator.pop(context, true);
                       },
                     ),
                   ),
-                  const SizedBox(width: 15.0),
+                  const SizedBox(height: 5.0),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

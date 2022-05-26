@@ -2,7 +2,8 @@
 // To update all exports inside project
 // run :
 // flutter pub run bin/export
-library user;
+library manage;
 
-export 'manage/manage.exports.dart';
+export 'components/components.exports.dart';
 
+export 'manage_menu.dart';

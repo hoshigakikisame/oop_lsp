@@ -2,7 +2,7 @@
 // To update all exports inside project
 // run :
 // flutter pub run bin/export
-library user;
+library menu;
 
 export 'manage/manage.exports.dart';
 

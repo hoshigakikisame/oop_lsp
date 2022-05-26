@@ -33,11 +33,15 @@ class MyApp extends StatelessWidget {
                   return ChangeNotifierProvider(
                       create: (_) => UserProvider(), child: const HomeAdmin());
                 case "manager":
-                  return const Home();
+                  return ChangeNotifierProvider(
+                      create: (_) => MenuProvider(),
+                      child: const HomeManager());
                 case "kasir":
-                  return const Home();
+                  return ChangeNotifierProvider(
+                      create: (_) => CartProvider(), child: const Home());
                 default:
-                  return const Home();
+                  return ChangeNotifierProvider(
+                      create: (_) => CartProvider(), child: const Home());
               }
             },
           },

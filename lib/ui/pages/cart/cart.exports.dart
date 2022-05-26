@@ -2,7 +2,9 @@
 // To update all exports inside project
 // run :
 // flutter pub run bin/export
-library user;
+library cart;
 
-export 'manage/manage.exports.dart';
+export 'transactions/transactions.exports.dart';
 
+export 'cart_page.dart';
+export 'cart_detail.dart';

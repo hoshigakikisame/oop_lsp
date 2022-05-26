@@ -36,6 +36,7 @@ class AuthProvider with ChangeNotifier {
       notifyListeners();
       return;
     }
+    _state = AuthProviderState.unauthenticated;
     notifyListeners();
   }
 
@@ -46,13 +47,16 @@ class AuthProvider with ChangeNotifier {
     refreshAccessToken();
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp(
+      {required String email,
+      required String password,
+      String? username = 'New User'}) async {
     final GotrueSessionResponse res =
         await supabaseRequest(supabase.auth.signUp(email, password));
     final user = res.data?.user;
     // create user profile
-    await supabaseRequest(
-        supabase.from('profile').insert({'user_id': user!.id}).execute());
+    await supabaseRequest(supabase.from('profile').insert(
+        {'user_id': user!.id, 'username': username, 'email': email}).execute());
   }
 
   Future<void> signIn({required String email, required String password}) async {
